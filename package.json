@@ -1,0 +1,20 @@
+{
+  "name": "raw-event-js",
+  "version": "1.0.0",
+  "description": "Tech Test in Node.js",
+  "main": "src/server.js",
+  "repository": "git@github.com:armand-go/raw-event-js.git",
+  "author": "Armand G. <armdgnthr@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node dist/services.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.4.1",
+    "nodemon": "^2.0.21"
+  }
+}

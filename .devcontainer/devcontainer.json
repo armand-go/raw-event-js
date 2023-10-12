@@ -1,0 +1,24 @@
+{
+	"name": "Technical Test JS",
+
+	// Update the 'dockerComposeFile' list if you have more compose files or use different names.
+	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
+	"dockerComposeFile": [
+		"../docker-compose.yml",
+		"docker-compose.yml"
+	],
+	"service": "node_app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"customizations": {
+		"vscode": {
+		  "extensions": [
+			"esbenp.prettier-vscode",
+			"hbenl.vscode-test-explorer",
+			"ms-vscode.vscode-typescript-next"
+		  ],
+		  "settings": {
+			"files.eol": "\n"
+		}
+	  }
+	}
+}

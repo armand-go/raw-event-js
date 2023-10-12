@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  node_app:
+    &node_app
+    build:
+      context: ./
+      dockerfile: infra/images/local/Dockerfile
+    volumes:
+      - .:/home/app
+    networks:
+      - billy_js
+    env_file: .env
+    environment:
+      - PYTHONUNBUFFERED=TRUE
+
+  technical_test_postgres:
+    container_name: technical_test_postgres
+    image: postgres:15-alpine
+    env_file: .env
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    networks:
+      - billy_js
+
+  node_api:
+    &node_api
+    <<: *node_app
+    container_name: node_api
+    env_file: .env
+    command:
+      - "yarn"
+      - "dev"
+    ports:
+      - 8080:8080
+
+volumes:
+  postgres-data: null
+networks:
+  billy_js:
+    name: billy_js
